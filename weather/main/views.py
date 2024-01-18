@@ -3,12 +3,15 @@ from django.shortcuts import render
 import json
 #urllib.request ro make request to api
 import urllib.request
+from dotenv import load_dotenv
+from os import getenv
+load_dotenv()
 
 # Create your views here.
 def index(request):
     if request.method == "POST":
         city = request.POST['city']
-        api_key = '7691ce9c9dec667d84991652df1ba5e8'
+        api_key = getenv("api_key")
 
         # construct url
         url = f'http://api.openweathermap.org/data/2.5/weather?q={city}&appid={api_key}'
